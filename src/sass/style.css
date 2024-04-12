@@ -1,0 +1,79 @@
+.container {
+  max-width: 1170px;
+  width: 100%;
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+span {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  padding-block: 40px;
+}
+
+.cream-shop {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.table-headers {
+  display: flex;
+  column-gap: 150px;
+  margin-bottom: 10px;
+  width: 545px;
+  border-bottom: 1px solid #e3e8e6;
+}
+
+.name {
+  display: flex;
+  column-gap: 70px;
+}
+
+.cream-shop-list__name {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  column-gap: 70px;
+}
+
+.cream-shop-list__item {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  column-gap: 55px;
+  border-bottom: 1px solid #e3e8e6;
+  padding-block: 10px;
+}
+
+.cream-shop-list {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+.button {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.footer__title {
+  margin-bottom: 40px;
+}
+
+.form-control {
+  width: 200px;
+}
+
+.form {
+  display: flex;
+  column-gap: 35px;
+}
+
+/*# sourceMappingURL=style.css.map */

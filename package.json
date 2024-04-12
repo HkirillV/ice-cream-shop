@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.23",
+    "sass": "^1.74.1"
+  },
+  "name": "ice-cream-shop",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/sass/style.scss src/sass/style.css",
+    "json-server": "npx json-server db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
