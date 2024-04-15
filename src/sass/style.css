@@ -33,6 +33,11 @@ span {
   column-gap: 70px;
 }
 
+.cream-shop-list__title {
+  width: 173px;
+  text-align: start;
+}
+
 .cream-shop-list__name {
   display: flex;
   text-align: center;

@@ -17,6 +17,10 @@
   display: flex;
   column-gap: 70px;
 }
+.cream-shop-list__title {
+  width: 173px;
+  text-align: start;
+}
 
 .cream-shop-list__name{
   display: flex;
@@ -24,6 +28,7 @@
   align-items: center;
   column-gap: 70px;
 }
+
 
 .cream-shop-list__item {
   display: flex;
