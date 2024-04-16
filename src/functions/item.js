@@ -46,7 +46,6 @@ const deleteItems = (id) => {
       items = items.filter((item) => item.id !== id)
       removeItemsFromDom(id)
       saveItemsToCache(items)
-      console.log(items)
     })
     .catch(err => {
       console.log(err)
@@ -64,14 +63,26 @@ const onItemsListClick = (event) => {
 
 creamShopListElement.addEventListener('click', onItemsListClick)
 
-formElement.addEventListener('submit',(event) => {
-  event.preventDefault()
-
+const getFormValue = () => {
   const formDataElement = new FormData(formElement)
+  const titleElement = formDataElement.get('title')
+  const countElement = formDataElement.get('count')
+  const dateElement = formDataElement.get('date')
 
-  const nameElement = formDataElement.get('name')
-  const numberElement = formDataElement.get('number')
-  const dateElement =  formDataElement.get('date')
+  itemAPI.addItem(items.length += 1, titleElement, countElement, dateElement)
+    .then(() => {
+      saveItemsToCache(items.length += 1, titleElement, countElement, dateElement)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+formElement.addEventListener('submit', (event) => {
+  event.preventDefault()
+  getFormValue()
 })
+
+
 
 

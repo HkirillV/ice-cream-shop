@@ -7,9 +7,9 @@ export const itemAPI = {
     return fetch(BASE_URL).then(parseResponse)
   },
   addItem: async (id, title, count, date) => {
-    return fetch(`${BASE_URL}/${id}`, {
-      body: JSON.stringify({id}),
-      method: 'POST'
+    return fetch(`${BASE_URL}`, {
+      method: 'POST',
+      body: JSON.stringify({id, title, count, date}),
     }).then(parseResponse)
   },
   deleteItem: async (id) => {
