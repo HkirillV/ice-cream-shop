@@ -1,16 +1,16 @@
 import {itemAPI, getCachedItems, saveItemsToCache} from "./functions.js"
 
 const creamShopListElement = document.querySelector('.cream-shop-list')
+const formElement = document.querySelector('.form')
 
 const cachedItems = getCachedItems()
-let items = cachedItems.length > 0 ? cachedItems  : await itemAPI.getItem()
-
+let items = cachedItems.length > 0 ? cachedItems : await itemAPI.getItem()
 
 const renderItems = () => {
 
   creamShopListElement.innerHTML = items.reduce((acc, el) => {
     const {id, title, count, date} = el
-      const item = `
+    const item = `
       <div class="cream-shop-list__item" data-id="${id}">
         <div class="cream-shop-list__name">
           <p class="fw-bold">${id}</p>
@@ -24,17 +24,19 @@ const renderItems = () => {
           <button class="button__delete btn btn-danger">Удалить</button>
           <button class="button__edit btn btn-primary">Редакт</button>
         </div>
+      </div>
       `
 
-    return item + acc
+    return acc + item
   }, '')
 }
 
 renderItems()
-
+saveItemsToCache(items)
 
 const removeItemsFromDom = (id) => {
   const itemsElement = document.querySelector(`.cream-shop-list__item[data-id="${id}"]`)
+
   itemsElement?.remove()
 }
 
@@ -44,6 +46,7 @@ const deleteItems = (id) => {
       items = items.filter((item) => item.id !== id)
       removeItemsFromDom(id)
       saveItemsToCache(items)
+      console.log(items)
     })
     .catch(err => {
       console.log(err)
@@ -53,15 +56,22 @@ const deleteItems = (id) => {
 const onItemsListClick = (event) => {
   const itemDeleteElement = event.target.closest('.button__delete')
 
-  if(!itemDeleteElement) return
-
   const itemElement = itemDeleteElement.closest('.cream-shop-list__item')
   const {id} = itemElement.dataset
-
 
   deleteItems(id)
 }
 
 creamShopListElement.addEventListener('click', onItemsListClick)
+
+formElement.addEventListener('submit',(event) => {
+  event.preventDefault()
+
+  const formDataElement = new FormData(formElement)
+
+  const nameElement = formDataElement.get('name')
+  const numberElement = formDataElement.get('number')
+  const dateElement =  formDataElement.get('date')
+})
 
 
