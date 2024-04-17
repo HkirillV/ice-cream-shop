@@ -6,6 +6,7 @@ const formElement = document.querySelector('.form')
 const cachedItems = getCachedItems()
 let items = cachedItems.length > 0 ? cachedItems : await itemAPI.getItem()
 
+
 const renderItems = () => {
 
   creamShopListElement.innerHTML = items.reduce((acc, el) => {
@@ -32,7 +33,7 @@ const renderItems = () => {
 }
 
 renderItems()
-saveItemsToCache(items)
+
 
 const removeItemsFromDom = (id) => {
   const itemsElement = document.querySelector(`.cream-shop-list__item[data-id="${id}"]`)
@@ -63,25 +64,31 @@ const onItemsListClick = (event) => {
 
 creamShopListElement.addEventListener('click', onItemsListClick)
 
-const getFormValue = () => {
+const onItemsAddFormSubmit = () => {
   const formDataElement = new FormData(formElement)
-  const titleElement = formDataElement.get('title')
-  const countElement = formDataElement.get('count')
-  const dateElement = formDataElement.get('date')
+  const dateElement = Object.fromEntries(formDataElement)
 
-  itemAPI.addItem(items.length += 1, titleElement, countElement, dateElement)
-    .then(() => {
-      saveItemsToCache(items.length += 1, titleElement, countElement, dateElement)
+  itemAPI.addItem(dateElement)
+    .then((date) => {
+      saveItemsToCache(date)
+      renderItems()
+      console.log("2:", dateElement)
     })
     .catch(err => {
       console.log(err)
     })
+  console.log("2:", dateElement)
 }
 
 formElement.addEventListener('submit', (event) => {
   event.preventDefault()
-  getFormValue()
+  onItemsAddFormSubmit()
 })
+
+
+
+
+
 
 
 
