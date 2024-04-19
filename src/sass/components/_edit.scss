@@ -1,0 +1,15 @@
+.edit-form {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  top: 200px;
+  z-index: 10;
+  column-gap: 10px;
+  padding: 40px;
+  background-color: lightblue;
+}
+
+.is-active {
+  display: flex;
+  visibility: visible;
+}

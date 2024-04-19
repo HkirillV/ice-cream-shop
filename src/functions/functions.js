@@ -32,3 +32,8 @@ export const getCachedItems = () => {
 export const saveItemsToCache = (id) => {
   localStorage.setItem('items', JSON.stringify(id))
 }
+
+
+export const isActive = (event) => {
+  event.classList.toggle('is-active')
+}

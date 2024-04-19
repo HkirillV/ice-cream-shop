@@ -1,7 +1,9 @@
-import {itemAPI, getCachedItems, saveItemsToCache} from "./functions.js"
+import {itemAPI, getCachedItems, saveItemsToCache, isActive} from "./functions.js"
 
 const creamShopListElement = document.querySelector('.cream-shop-list')
 const formElement = document.querySelector('.form')
+const editFormElement = document.querySelector('.edit-form')
+const buttonEditElement = document.querySelector('.button-edit')
 
 const cachedItems = getCachedItems()
 let items = cachedItems.length > 0 ? cachedItems : await itemAPI.getItem()
@@ -83,6 +85,7 @@ const onItemsAddFormSubmit = (event) => {
 }
 
 formElement.addEventListener('submit', onItemsAddFormSubmit)
+// buttonEditElement.addEventListener('click', isActive)
 
 
 
