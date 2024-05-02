@@ -1,68 +1,39 @@
 .cream-shop {
+  margin-bottom: 70px;
+  position: relative;
+
+  &-table__title {
+    display: flex;
+    column-gap: 130px;
+    margin-bottom: 10px;
+  }
+
+}
+
+.test {
+  display: flex;
+}
+
+.table-list {
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  row-gap: 10px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
-.table-headers {
-  display: flex;
-  column-gap: 150px;
-  margin-bottom: 10px;
-  width: 545px;
-  border-bottom: 1px solid #e3e8e6;
-
+.table-list__id {
+  margin-right: 150px;
 }
 
-.name {
-  display: flex;
-  column-gap: 70px;
-}
-.cream-shop-list__title {
-  width: 173px;
-  text-align: start;
-}
-
-.cream-shop-list__name{
-  display: flex;
-  text-align: center;
-  align-items: center;
-  column-gap: 70px;
+.table-list__name, .table-list__manufacturer, .table-list__price {
+  width: 250px;
 }
 
 
-.cream-shop-list__item {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  column-gap: 55px;
-  border-bottom: 1px solid #e3e8e6;
-  padding-block: 10px;
-}
 
-.cream-shop-list {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-}
 
-.button {
-  text-align: center;
-}
-
-p {
-  margin: 0;
-}
-
-.footer__title {
-  margin-bottom: 40px;
-}
-
-.form-control {
-  width: 200px;
-}
-
-.form {
-  display: flex;
-  column-gap: 35px;
-}
 

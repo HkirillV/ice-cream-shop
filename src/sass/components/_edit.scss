@@ -1,11 +1,15 @@
 .edit-form {
   display: none;
-  visibility: hidden;
+  flex-direction: column;
   position: absolute;
-  top: 200px;
+  visibility: hidden;
+  top: 100px;
+  left: 250px;
   z-index: 10;
-  column-gap: 10px;
+  row-gap: 15px;
+  opacity: 0.9;
   padding: 40px;
+  width: 400px;
   background-color: lightblue;
 }
 

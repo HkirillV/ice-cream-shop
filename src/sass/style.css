@@ -19,86 +19,65 @@ span {
 }
 
 .cream-shop {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+  position: relative;
 }
-
-.table-headers {
+.cream-shop-table__title {
   display: flex;
-  column-gap: 150px;
+  column-gap: 130px;
   margin-bottom: 10px;
-  width: 545px;
-  border-bottom: 1px solid #e3e8e6;
 }
 
-.name {
+.test {
   display: flex;
-  column-gap: 70px;
 }
 
-.cream-shop-list__title {
-  width: 173px;
-  text-align: start;
-}
-
-.cream-shop-list__name {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  column-gap: 70px;
-}
-
-.cream-shop-list__item {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  column-gap: 55px;
-  border-bottom: 1px solid #e3e8e6;
-  padding-block: 10px;
-}
-
-.cream-shop-list {
+.table-list {
   display: flex;
   flex-direction: column;
-  width: 800px;
+  row-gap: 10px;
 }
-
-.button {
-  text-align: center;
-}
-
-p {
-  margin: 0;
-}
-
-.footer__title {
-  margin-bottom: 40px;
-}
-
-.form-control {
-  width: 200px;
-}
-
-.form {
+.table-list__item {
   display: flex;
-  column-gap: 35px;
+  justify-content: space-between;
+}
+
+.table-list__id {
+  margin-right: 150px;
+}
+
+.table-list__name, .table-list__manufacturer, .table-list__price {
+  width: 250px;
 }
 
 .edit-form {
   display: none;
-  visibility: hidden;
+  flex-direction: column;
   position: absolute;
-  top: 200px;
+  visibility: hidden;
+  top: 100px;
+  left: 250px;
   z-index: 10;
-  column-gap: 10px;
+  row-gap: 15px;
+  opacity: 0.9;
   padding: 40px;
+  width: 400px;
   background-color: lightblue;
 }
 
 .is-active {
   display: flex;
   visibility: visible;
+}
+
+.footer__title {
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  column-gap: 10px;
+  width: 1000px;
 }
 
 /*# sourceMappingURL=style.css.map */
