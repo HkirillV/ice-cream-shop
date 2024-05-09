@@ -22,33 +22,6 @@ span {
   margin-bottom: 70px;
   position: relative;
 }
-.cream-shop-table__title {
-  display: flex;
-  column-gap: 130px;
-  margin-bottom: 10px;
-}
-
-.test {
-  display: flex;
-}
-
-.table-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
-.table-list__item {
-  display: flex;
-  justify-content: space-between;
-}
-
-.table-list__id {
-  margin-right: 150px;
-}
-
-.table-list__name, .table-list__manufacturer, .table-list__price {
-  width: 250px;
-}
 
 .edit-form {
   display: none;
@@ -75,6 +48,13 @@ span {
 }
 
 .form {
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 10px;
+  width: 1000px;
+}
+
+.form-category {
   display: flex;
   column-gap: 10px;
   width: 1000px;

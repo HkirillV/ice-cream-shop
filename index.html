@@ -17,14 +17,14 @@
 </header>
 <main class="container">
   <section class="cream-shop">
-    <table class="cream-shop-table">
+    <table class="cream-shop-table table table-hover">
       <thead>
       <tr class="cream-shop-table__title">
-        <th>#</th>
-        <th>Наименование</th>
-        <th>Производитель</th>
-        <th>Категория</th>
-        <th>Цена</th>
+        <th scope="col">#</th>
+        <th scope="col">Наименование</th>
+        <th scope="col">Производитель</th>
+        <th scope="col">Категория</th>
+        <th scope="col">Цена</th>
       </tr>
       </thead>
       <tbody class="table-list">
@@ -35,11 +35,10 @@
       <input class="edit-form__id form-control" type="number" name="id" readonly>
       <input class="edit-form__name form-control" type="text" name="name">
       <input class="edit-form__manufacturer form-control" type="text" name="manufacturer">
-      <input class="edit-form__category form-control" type="text" name="category" list="categories-edit" placeholder="Категория">
-      <datalist id="categories-edit">
-        <option value="Шоколадное"></option>
-        <option value="Сливочное"></option>
-      </datalist>
+      <select class="edit-form__category form-control" type="number" name="category_id">
+        <option value="1">Шоколадное</option>
+        <option value="2">Сливочное</option>
+      </select>
       <input class="edit-form__price form-control" type="number" name="price" placeholder="Цена">
       <button class="edit-form__button-edit btn btn-primary" type="submit">Изменить</button>
     </form>
@@ -50,13 +49,21 @@
   <form class="form">
     <input class="form-control" type="text" name="name" placeholder="Наименование">
     <input class="form-control" type="text" name="manufacturer" placeholder="Производитель">
-    <input class="form-control" type="text" name="category" list="categories-add" placeholder="Категория">
-    <datalist id="categories-add">
-      <option value="Шоколадное"></option>
-      <option value="Сливочное"></option>
-    </datalist>
+    <select class="form-category__test form-control" type="number" name="category_id">
+
+    </select>
     <input class="form-control" type="number" name="price" placeholder="Цена">
     <button class="btn btn-primary" type="submit">Добавить</button>
+  </form>
+  <h3 class="footer__title fw-bold">Категории</h3>
+  <form class="form-category">
+    <input class="form-category__input form-control" type="text" name="name" placeholder="Наименование">
+    <button class="form-category__add btn btn-primary" type="submit">Добавить</button>
+    <select class="form-category__list form-control" type="number" name="category_id">
+
+    </select>
+    <button class="btn btn-danger" type="submit">Удалить</button>
+    <button class="btn btn-primary" type="submit">Редак</button>
   </form>
 </footer>
 <script type="module" src="index.js"></script>

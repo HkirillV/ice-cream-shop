@@ -12,20 +12,17 @@ const renderItems = () => {
 
   creamShopListElement.innerHTML = items.reduce((acc, el) => {
     const {id, category_id, name, manufacturer, price} = el
-
     const item = `
     <tr class="table-list__item" data-id="${id}">
-      <th class="table-list__id">${id}</th>
+      <th class="table-list__id" scope="row">${id}</th>
       <td class="table-list__name">${name}</td>
       <td class="table-list__manufacturer">${manufacturer}</td>
-      <td class="table-list__category"></td>
+      <td class="table-list__category">${category_id}</td>
       <td class="table-list__price">${price}</td>
       <td>
         <button class="button__delete btn btn-danger">Удалить</button>
-      </td>
-      <td>
         <button class="button__edit btn btn-primary">Редакт</button>
-     </td>
+      </td>
       </tr>
       `
     return acc + item
@@ -47,6 +44,7 @@ const deleteItems = (id) => {
       items = items.filter((item) => item.id !== id)
       removeItemsFromDom(id)
       saveItemsToCache(items)
+      renderItems()
     })
     .catch(err => {
       console.log(err)
@@ -55,10 +53,12 @@ const deleteItems = (id) => {
 
 const editItemsElement = (id) => {
   const itemsElement = document.querySelector(`.table-list__item[data-id="${id}"]`)
+
   const name = itemsElement.querySelector('.table-list__name').textContent
   const manufacturer = itemsElement.querySelector('.table-list__manufacturer').textContent
   const category = itemsElement.querySelector('.table-list__category').textContent
   const price = itemsElement.querySelector('.table-list__price').textContent
+
   isActive(id, category, name, manufacturer, price)
 }
 
@@ -85,9 +85,11 @@ creamShopListElement.addEventListener('click', onItemsListClick)
 const onItemsAddFormSubmit = (event) => {
   event.preventDefault()
   const formDataElement = new FormData(event.target)
-  const {name, manufacturer, price} = Object.fromEntries(formDataElement)
-  const id = items.length + 1
-  const newItemsElement = {id, name, manufacturer, price}
+  const {category_id, name, manufacturer, price} = Object.fromEntries(formDataElement)
+  const idFalseAndTrue = items.some((item) => item.id === items.length + 1)
+  const id = idFalseAndTrue === true ? items.length + 2 : items.length + 1
+
+  const newItemsElement = {id, category_id, name, manufacturer, price}
 
   itemAPI.addItem(newItemsElement)
     .then(() => {
@@ -104,15 +106,14 @@ const onItemsAddFormSubmit = (event) => {
 const onItemsEditFormSubmit = (event) => {
   event.preventDefault()
   const formDataElement = new FormData(editFormElement)
-  const {id, name, manufacturer, price} = Object.fromEntries(formDataElement)
-  itemAPI.editItems(id, name, manufacturer, price)
+  const {id, category_id, name, manufacturer, price} = Object.fromEntries(formDataElement)
+  itemAPI.editItems(id, category_id, name, manufacturer, price)
     .then(() => {
       const editedItemIndex = items.findIndex(item => item.id === String(id))
       if (editedItemIndex !== -1) {
-        items[editedItemIndex] = {id, name, manufacturer, price}
+        items[editedItemIndex] = {id, category_id, name, manufacturer, price}
         saveItemsToCache(items)
         renderItems()
-        console.log(items)
       }
     })
     .catch(err => {
@@ -121,7 +122,6 @@ const onItemsEditFormSubmit = (event) => {
 
   editFormElement.classList.remove('is-active')
 }
-
 
 formElement.addEventListener('submit', onItemsAddFormSubmit)
 buttonEditElement.addEventListener('click', onItemsEditFormSubmit)
