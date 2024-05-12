@@ -38,9 +38,27 @@ span {
   background-color: lightblue;
 }
 
+.edit-category {
+  display: none;
+  position: absolute;
+  opacity: 0.9;
+  column-gap: 10px;
+  top: 100px;
+  left: 488px;
+  z-index: 10;
+  visibility: hidden;
+  padding: 30px;
+  width: 350px;
+  background-color: lightblue;
+}
+
 .is-active {
   display: flex;
   visibility: visible;
+}
+
+.footer {
+  position: relative;
 }
 
 .footer__title {

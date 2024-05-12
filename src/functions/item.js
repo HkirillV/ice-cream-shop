@@ -86,8 +86,8 @@ const onItemsAddFormSubmit = (event) => {
   event.preventDefault()
   const formDataElement = new FormData(event.target)
   const {category_id, name, manufacturer, price} = Object.fromEntries(formDataElement)
-  const idFalseAndTrue = items.some((item) => item.id === items.length + 1)
-  const id = idFalseAndTrue === true ? items.length + 2 : items.length + 1
+  const idFalseAndTrue = items.every(item => item.id !== String(items.length + 1))
+  const id = idFalseAndTrue === true ? items.length + 1 : items.length + 2
 
   const newItemsElement = {id, category_id, name, manufacturer, price}
 

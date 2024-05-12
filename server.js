@@ -105,5 +105,34 @@ app.post('/ice_cream_categories', (req, res) => {
   });
 });
 
+app.delete('/ice_cream_categories/:id', async (req, res) => {
+  const idToDelete = req.params.id;
+
+  try {
+    const query = 'DELETE FROM ice_cream_categories WHERE id = $1';
+    const result = await pool.query(query, [idToDelete]);
+
+    res.status(200).json({message:'Ice cream with ID ' + idToDelete + ' deleted successfully'});
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({message:'Error deleting ice_cream_categories'});
+  }
+});
+
+app.put('/ice_cream_categories/:id', async (req, res) => {
+  const { name } = req.body;
+  const categoryId = req.params.id;
+
+  try {
+    const query = 'UPDATE ice_cream_categories SET name = $1 WHERE id = $2';
+    const result = await pool.query(query, [name, categoryId]);
+
+    res.status(200).json({ message: ice_cream_category});
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating ice_cream_category' });
+  }
+});
+
+
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));

@@ -1,4 +1,3 @@
-
 const BASE_URL = 'http://localhost:3000/icecream'
 
 const parseResponse = (response) => response.json()
@@ -57,11 +56,11 @@ export const isActive = (id, category, name, manufacturer, price) => {
   const editFormCategoryElement = editFormElement.querySelector('.edit-form__category')
   const editFormPriceElement = editFormElement.querySelector('.edit-form__price')
 
-  const newValueFormIdElement = editFormIdElement.value = id
-  const newValueFormNameElement = editFormNameElement.value = name
-  const newValueFormManufacturerElement = editFormManufacturerElement.value = manufacturer
-  const newValueFormCategoryElement = editFormCategoryElement.value = category
-  const newValueFormPriceElement = editFormPriceElement.value = price
+  editFormIdElement.value = id
+  editFormNameElement.value = name
+  editFormManufacturerElement.value = manufacturer
+  editFormCategoryElement.value = category
+  editFormPriceElement.value = price
   editFormElement.classList.toggle('is-active')
 }
 
@@ -86,17 +85,14 @@ export const categoryAPI = {
   deleteCategory: async (id) => {
     return fetch(`${URL_CATEGORY}/${id}`, {
       method: 'DELETE',
-    }).then(parseResponse)
+    }).then(parseResponseCat)
   },
-  editCategory: async (id, category_id, name, manufacturer, price) => {
+  editCategory: async (id, name) => {
     return fetch(`${URL_CATEGORY}/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         id: id,
-        category_id: category_id,
         name: name,
-        manufacturer: manufacturer,
-        price: price
       }),
       headers: {
         'Content-Type': 'application/json',
